@@ -11,6 +11,15 @@ class Hello extends CI_Controller {
 	public function world($name = 'Person')
 	{	
 		$data['v1'] = $name;
+		$data['row'] = array(	
+		'aled',
+		'ed',
+		'richie',
+		'robert',
+		'paul',
+		'liam',
+		'benn'
+		);
 		$this->load->view('hello_view' , $data);
 	}
 
