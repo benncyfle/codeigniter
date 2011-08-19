@@ -20,12 +20,24 @@ class Hello extends CI_Controller {
 		'liam',
 		'benn'
 		);
-		$this->load->view('hello_view' , $data);
+
+        $this->load->model('blog' , '', TRUE);
+        $data['blog'] = $this->blog->get_last_ten_entries();
+        $this->load->view('hello_view' , $data);
 	}
 
-	public function benn()
+	
+	
+		public function blog($slug = null)
 	{
-		echo("Hi benn");
+		if (empty($slug))
+		{
+		echo 'need slug';
+		exit;
+		}
+		$this->load->model('blog' , '', TRUE);
+		$data['entry'] = $this->blog->get_entry($slug);
+		$this->load->view('blog_entry' , $data);
 	}
 	
 }
